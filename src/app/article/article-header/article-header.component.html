@@ -1,0 +1,16 @@
+<header class="post-header">
+  <h2 class="post-title">
+    <a *ngIf="!isEditable" href="http://blog.miniasp.com/post/2016/04/30/Visual-Studio-Code-from-Command-Prompt-notes.aspx">
+      {{item.title}}</a>
+    <input *ngIf="isEditable" type="text" [(ngModel)]="item.title"
+    (keyup.enter)="changeTitle(); isEditable = false"
+    (keyup.escape)="cancleEdit()" />
+  </h2>
+  <div class="post-info clearfix">
+    {{item.bool}}
+    <span>
+      <button (click)="deleteArticle()">刪除</button>
+      <button (click)="editOnClicked()">{{ (!isEditable) ? "編輯標題": "取消編輯" }}</button>
+    </span>
+  </div>
+</header>
